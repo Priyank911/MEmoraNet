@@ -53,6 +53,3 @@ MEmoraNet is an advanced Retrieval-Augmented Generation (RAG) based chatbot desi
 
 Please read our contributing guidelines before submitting pull requests.
 
-## License
-
-MIT License
