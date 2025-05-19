@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { SignInButton, useAuth } from '@clerk/clerk-react';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isSignedIn } = useAuth();
 
   return (
     <header className="bg-white border-b border-gray-200 py-3 fixed w-full top-0 z-50">
       <div className="nextjs-container flex items-center justify-between px-4">
         {/* Logo and Brand */}
         <div className="flex items-center space-x-2">
-          <a href="/" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <img src="/logo.png" alt="MEmoraNet Logo" className="h-6 w-9 mr-2" />
             <span className="dashboard-navbar-divider">/</span>
             <span className="text-xl font-bold text-gray-900 ml-2">MEmoraNet</span>
-          </a>
+          </Link>
         </div>
 
         {/* Hamburger Menu Button - Mobile Only */}
@@ -30,10 +33,10 @@ const Header: React.FC = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <a href="/docs" className="text-base text-gray-700 hover:text-black font-normal transition-colors">Docs</a>
-          <a href="/about" className="text-base text-gray-700 hover:text-black font-normal transition-colors">About</a>
-          <a href="/developer" className="text-base text-gray-700 hover:text-black font-normal transition-colors">Developer</a>
-          <a href="/contact" className="text-base text-gray-700 hover:text-black font-normal transition-colors">Contact us</a>
+          <Link to="/docs" className="text-base text-gray-700 hover:text-black font-normal transition-colors">Docs</Link>
+          <Link to="/about" className="text-base text-gray-700 hover:text-black font-normal transition-colors">About</Link>
+          <Link to="/developer" className="text-base text-gray-700 hover:text-black font-normal transition-colors">Developer</Link>
+          <Link to="/contact" className="text-base text-gray-700 hover:text-black font-normal transition-colors">Contact us</Link>
         </nav>
 
         {/* Desktop Actions */}
@@ -41,13 +44,24 @@ const Header: React.FC = () => {
           <span className="font-bold text-gray-900 flex items-center">
             <span className="mr-1" style={{fontSize: '1rem'}}>▲</span> Get Started
           </span>
-          <a
-            href="/learn"
-            className="bg-white border border-gray-200 text-black font-semibold px-6 py-2 rounded-xl shadow-sm hover:bg-gray-100 transition"
-            style={{minWidth: '72px', textAlign: 'center'}}
-          >
-            Learn
-          </a>
+          {isSignedIn ? (
+            <Link
+              to="/chat"
+              className="bg-white border border-gray-200 text-black font-semibold px-6 py-2 rounded-xl shadow-sm hover:bg-gray-100 transition"
+              style={{minWidth: '72px', textAlign: 'center'}}
+            >
+              Chat
+            </Link>
+          ) : (
+            <SignInButton mode="modal">
+              <button
+                className="bg-white border border-gray-200 text-black font-semibold px-6 py-2 rounded-xl shadow-sm hover:bg-gray-100 transition"
+                style={{minWidth: '72px', textAlign: 'center'}}
+              >
+                Sign In
+              </button>
+            </SignInButton>
+          )}
         </div>
 
         {/* Mobile Menu Overlay */}
@@ -78,47 +92,58 @@ const Header: React.FC = () => {
             </div>
             
             <nav className="flex flex-col space-y-6">
-              <a 
-                href="/docs" 
+              <Link 
+                to="/docs" 
                 className="text-base text-gray-700 hover:text-black font-normal transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Docs
-              </a>
-              <a 
-                href="/about" 
+              </Link>
+              <Link 
+                to="/about" 
                 className="text-base text-gray-700 hover:text-black font-normal transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
-              </a>
-              <a 
-                href="/developer" 
+              </Link>
+              <Link 
+                to="/developer" 
                 className="text-base text-gray-700 hover:text-black font-normal transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Developer
-              </a>
-              <a 
-                href="/contact" 
+              </Link>
+              <Link 
+                to="/contact" 
                 className="text-base text-gray-700 hover:text-black font-normal transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact us
-              </a>
+              </Link>
             </nav>
 
             <div className="mt-8 pt-6 border-t border-gray-200">
               <span className="font-bold text-gray-900 flex items-center mb-4">
                 <span className="mr-1" style={{fontSize: '1rem'}}>▲</span> Get Started
               </span>
-              <a
-                href="/learn"
-                className="block w-full bg-white border border-gray-200 text-black font-semibold px-6 py-2 rounded-xl shadow-sm hover:bg-gray-100 transition text-center"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Learn
-              </a>
+              {isSignedIn ? (
+                <Link
+                  to="/chat"
+                  className="block w-full bg-white border border-gray-200 text-black font-semibold px-6 py-2 rounded-xl shadow-sm hover:bg-gray-100 transition text-center"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Chat
+                </Link>
+              ) : (
+                <SignInButton mode="modal">
+                  <button
+                    className="block w-full bg-white border border-gray-200 text-black font-semibold px-6 py-2 rounded-xl shadow-sm hover:bg-gray-100 transition text-center"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Sign In
+                  </button>
+                </SignInButton>
+              )}
             </div>
           </div>
         </div>

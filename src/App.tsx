@@ -6,7 +6,8 @@ import Tools from "./components/Tools";
 import Deployment from "./components/Deployment";
 import Footer from "./components/Footer";
 import ChatPage from './components/chat/ChatPage';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -23,7 +24,15 @@ function App() {
           <Footer />
         </div>
       } />
-      <Route path="/chat" element={<ChatPage />} />
+      <Route 
+        path="/chat" 
+        element={
+          <ProtectedRoute>
+            <ChatPage />
+          </ProtectedRoute>
+        } 
+      />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
