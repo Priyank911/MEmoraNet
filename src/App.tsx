@@ -5,7 +5,7 @@ import Features from "./components/Features";
 import Tools from "./components/Tools";
 import Deployment from "./components/Deployment";
 import Footer from "./components/Footer";
-import ChatCredential from './components/chatcredential';
+import ChatPage from './components/chat/ChatPage';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
           <Footer />
         </div>
       } />
-      <Route path="/chat" element={<ChatCredential />} />
+      <Route path="/chat" element={<ChatPage />} />
     </Routes>
   );
 }
