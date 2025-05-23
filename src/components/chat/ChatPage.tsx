@@ -51,6 +51,13 @@ const ChatPage: React.FC = () => {
       <ChatHeader />
       <main className="flex-grow p-4 mt-16">
         <div className="max-w-4xl mx-auto">
+          {/* Authentication Success Message Box */}
+          <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
+            <p className="font-bold">Authentication Successful!</p>
+            <p>You are now logged in. Please return to the VS Code extension to continue.</p>
+          </div>
+
+          {/* Main Chat Content */}
           <div className="bg-white rounded-lg shadow p-4">
             <p>Welcome to your chat! Start a conversation below.</p>
             {/* Add your chat interface components here */}
