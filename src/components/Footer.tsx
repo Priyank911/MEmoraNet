@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
+const { useState, useEffect } = React;
 
 interface LinkColumnProps {
   title: string;
   links: { label: string; href: string }[];
 }
 
-const LinkColumn: React.FC<LinkColumnProps> = ({ title, links }) => {
+const LinkColumn: React.FC<LinkColumnProps> = ({ title, links }: LinkColumnProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // Tailwind's md breakpoint is 768px
+      setIsMobile(window.innerWidth < 768);
     };
 
     handleResize();
@@ -41,7 +42,7 @@ const LinkColumn: React.FC<LinkColumnProps> = ({ title, links }) => {
         )}
       </button>
       <ul className={`space-y-3 ${isMobile ? (isOpen ? 'block pb-4' : 'hidden') : 'block'}`}>
-        {links.map((link, index) => (
+        {links.map((link: { label: string; href: string }, index: number) => (
           <li key={index}>
             <a
               href={link.href}
@@ -67,16 +68,6 @@ const Footer: React.FC = () => {
     { label: 'Analytics', href: '/analytics' },
     { label: 'MEmoraNet Conf', href: '/conf' },
     { label: 'Enterprise', href: '/enterprise' },
-  ];
-
-  const moreLinks = [
-    { label: 'Use Cases', href: '/use-cases' },
-    { label: 'Contact Sales', href: '/contact' },
-    { label: 'Community', href: '/community' },
-    { label: 'GitHub', href: 'https://github.com/memoranet' },
-    { label: 'Releases', href: '/releases' },
-    { label: 'Privacy', href: '/privacy' },
-    { label: 'Terms', href: '/terms' },
   ];
 
   const companyLinks = [

@@ -3,6 +3,7 @@ import ChatCredential from '../chatcredential';
 import { useAuth } from '@clerk/clerk-react';
 import { SignInButton } from '@clerk/clerk-react';
 import { useAuthManager } from '../../hooks/useAuthManager';
+import ChatHeader from '../ChatHeader';
 
 const ChatPage: React.FC = () => {
   const { isSignedIn, isLoaded } = useAuth();
@@ -48,10 +49,9 @@ const ChatPage: React.FC = () => {
   console.log('✅ User authenticated, showing chat interface');
   return (
     <div className="min-h-screen flex flex-col">
-      <ChatCredential />
-      <main className="flex-grow p-4">
+      <ChatHeader />
+      <main className="flex-grow p-4 mt-16">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-2xl font-bold mb-4">Chat</h1>
           <div className="bg-white rounded-lg shadow p-4">
             <p>Welcome to your chat! Start a conversation below.</p>
             {/* Add your chat interface components here */}

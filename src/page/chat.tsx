@@ -1,7 +1,6 @@
-import React from 'react';
 import ChatCredential from '../components/chatcredential';
 
-function Dashboard() {
+const Dashboard = () => {
   return (
     <div className="chatcredential-container">
       <ChatCredential />
@@ -13,6 +12,6 @@ function Dashboard() {
       </div>
     </div>
   );
-}
+};
 
-export default ChatCredential;
+export default Dashboard;
