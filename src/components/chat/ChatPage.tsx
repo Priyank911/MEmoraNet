@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import ChatCredential from '../chatcredential';
 import { useAuth } from '@clerk/clerk-react';
 import { SignInButton } from '@clerk/clerk-react';
 import { useAuthManager } from '../../hooks/useAuthManager';
