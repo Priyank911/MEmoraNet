@@ -7,6 +7,8 @@ import Deployment from "./components/Deployment";
 import Footer from "./components/Footer";
 import ChatPage from './components/chat/ChatPage';
 import NotFound from './components/NotFound';
+import AuthCallback from './components/AuthCallback';
+import AuthSuccess from './components/AuthSuccess';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from '@clerk/clerk-react';
 
@@ -45,6 +47,8 @@ function App() {
           )
         } 
       />
+      <Route path="/auth" element={<AuthCallback />} />
+      <Route path="/auth/success" element={<AuthSuccess />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
