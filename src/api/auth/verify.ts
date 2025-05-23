@@ -1,7 +1,10 @@
 import { clerkClient } from '@clerk/clerk-sdk-node';
-import { Request, Response } from 'express';
+import { VercelRequest, VercelResponse } from '@vercel/node';
 
-export default async function handler(req: Request, res: Response) {
+export default async function handler(
+  req: VercelRequest,
+  res: VercelResponse
+) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -14,13 +17,15 @@ export default async function handler(req: Request, res: Response) {
     }
 
     // Verify the token with Clerk
-    const session = await clerkClient.sessions.verifySession(token);
-
-    if (!session) {
+    try {
+      const session = await clerkClient.sessions.getSession(token);
+      if (session) {
+        return res.status(200).json({ authenticated: true });
+      }
+      return res.status(401).json({ error: 'Invalid token' });
+    } catch (error) {
       return res.status(401).json({ error: 'Invalid token' });
     }
-
-    return res.status(200).json({ authenticated: true });
   } catch (error) {
     console.error('Error verifying token:', error);
     return res.status(500).json({ error: 'Internal server error' });
