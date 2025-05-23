@@ -2,9 +2,17 @@
 
 import React from 'react';
 import { useUser, SignInButton } from "@clerk/clerk-react";
+import { useNavigate } from 'react-router-dom';
 
 const Hero: React.FC = () => {
   const { isLoaded, isSignedIn } = useUser();
+  const navigate = useNavigate();
+
+  const handleStartChatting = () => {
+    if (isSignedIn) {
+      navigate('/chat');
+    }
+  };
 
   return (
     <div className="nextjs-container py-16 md:py-24 text-center mt-32">
@@ -25,12 +33,12 @@ const Hero: React.FC = () => {
             </button>
           </SignInButton>
         ) : (
-          <a
-            href="/chat"
+          <button
+            onClick={handleStartChatting}
             className="nextjs-button-primary px-8 py-3 font-medium"
           >
             Start Chatting
-          </a>
+          </button>
         )}
 
         <a
@@ -40,7 +48,8 @@ const Hero: React.FC = () => {
           Learn More
         </a>
       </div>
-      <div className="text-xs text-gray-500 flex items-center justify-center">
+      
+      <div className="flex items-center justify-center text-sm text-gray-500">
         <svg
           height="16"
           viewBox="0 0 9 9"
