@@ -31,16 +31,17 @@ const Deployment: React.FC = () => {
               <img src="priyank.jpg" alt="Team Member" className="object-cover w-full h-full"/>
             </div>
             <span className="text-lg font-semibold text-gray-900 mb-1">Priyank Panchal</span>
+            <span className="text-sm text-gray-600 mb-3">Full Stack & Technical Architect</span>
             <p className="text-xs text-gray-500 text-center mb-4">
-             Front-end & Backend Developer
+           "Architecting ideas. Building on blockchain. Let’s connect."
             </p>
             <div className="flex gap-3 text-gray-600 mt-2">
               {/* GitHub Link */}
-              <a href="#" aria-label="GitHub" className="flex items-center justify-center w-8 h-8 border border-gray-400 rounded-full hover:border-gray-700 hover:text-gray-900 transition-colors duration-200">
+              <a href="https://github.com/Priyank911" aria-label="GitHub" className="flex items-center justify-center w-8 h-8 border border-gray-400 rounded-full hover:border-gray-700 hover:text-gray-900 transition-colors duration-200">
                 <FaGithub className="w-4 h-4"/>
               </a>
               {/* Instagram Link */}
-              <a href="#" aria-label="Instagram" className="flex items-center justify-center w-8 h-8 border border-gray-400 rounded-full hover:border-gray-700 hover:text-gray-900 transition-colors duration-200">
+              <a href="https://www.instagram.com/developer.priyank/" aria-label="Instagram" className="flex items-center justify-center w-8 h-8 border border-gray-400 rounded-full hover:border-gray-700 hover:text-gray-900 transition-colors duration-200">
                 <FaInstagram className="w-4 h-4"/>
               </a>
             </div>
@@ -53,16 +54,17 @@ const Deployment: React.FC = () => {
                <img src="prayers.png" alt="Team Member" className="object-cover w-full h-full"/>
             </div>
             <span className="text-lg font-semibold text-gray-900 mb-1">Prayers Khristi</span>
+            <span className="text-sm text-gray-600 mb-3">AI ML Developer | Security Engineer</span>
             <p className="text-xs text-gray-500 text-center mb-4">
-              AI Model Developer
+              "Crafted intelligent AI with unwavering fortress-grade security."
             </p>
             <div className="flex gap-3 text-gray-600 mt-2">
               {/* GitHub Link */}
-              <a href="#" aria-label="GitHub" className="flex items-center justify-center w-8 h-8 border border-gray-400 rounded-full hover:border-gray-700 hover:text-gray-900 transition-colors duration-200">
+              <a href="https://github.com/Prayers-2004" aria-label="GitHub" className="flex items-center justify-center w-8 h-8 border border-gray-400 rounded-full hover:border-gray-700 hover:text-gray-900 transition-colors duration-200">
                 <FaGithub className="w-4 h-4"/>
               </a>
               {/* Instagram Link */}
-              <a href="#" aria-label="Instagram" className="flex items-center justify-center w-8 h-8 border border-gray-400 rounded-full hover:border-gray-700 hover:text-gray-900 transition-colors duration-200">
+              <a href="https://www.instagram.com/prayerskhristi/" aria-label="Instagram" className="flex items-center justify-center w-8 h-8 border border-gray-400 rounded-full hover:border-gray-700 hover:text-gray-900 transition-colors duration-200">
                 <FaInstagram className="w-4 h-4"/>
               </a>
             </div>
