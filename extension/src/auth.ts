@@ -18,6 +18,17 @@ export class AuthProvider {
     return this.token;
   }
 
+  async checkAuthStatus(): Promise<boolean> {
+    try {
+      const response = await fetch('https://memora-net.vercel.app/api/auth-status');
+      const data = await response.json();
+      return data.authenticated === true;
+    } catch (error) {
+      console.error('Error checking auth status:', error);
+      return false;
+    }
+  }
+
   async handleCallback(url: vscode.Uri): Promise<void> {
     const params = new URLSearchParams(url.query);
     const token = params.get('token');
@@ -35,7 +46,7 @@ export class AuthProvider {
 
   async signIn(): Promise<void> {
     const callbackUrl = vscode.Uri.parse('memoranet://auth/callback');
-    const authUrl = `http://localhost:3000/auth?callback=${encodeURIComponent(callbackUrl.toString())}`;
+    const authUrl = `https://memora-net.vercel.app/auth?callback=${encodeURIComponent(callbackUrl.toString())}`;
     
     // Open auth page in browser
     vscode.env.openExternal(vscode.Uri.parse(authUrl));
